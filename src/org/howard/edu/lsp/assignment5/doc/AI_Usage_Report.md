@@ -10,8 +10,7 @@ ChatGPT also assisted with preparing the Java files for GitHub, understanding ho
 
 ## AI Conversation Links
 
-- ChatGPT Assignment 5 conversation: [Replace with actual shareable conversation URL]
-
+- ChatGPT Assignment 5 conversation: [https://chatgpt.com/share/6ad6f659-079c-83ea-8669-d72feb0c2a26
 ## External References
 
 No external websites were consulted for the Java implementation during this conversation.
