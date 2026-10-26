@@ -1,0 +1,7 @@
+# Evolving Requirements and Design Rationale
+
+The `RegistrationService` can keep the same main responsibility: coordinate registration. It collaborates with a `RegistrationRepository` rather than writing to a file itself. The original CRC cards already contain `FileRegistrationRepository`; I would add a `DatabaseRegistrationRepository` card with responsibility to save records in a database and collaborator `RegistrationRepository` and `Registration`. The deployment configuration would select which repository implementation the service receives.
+
+Likewise, the existing `ConfirmationSender` role lets the service request a confirmation without deciding how it is delivered. I would add `TextConfirmationSender`, responsible for sending a text message, collaborating with `ConfirmationSender`, `Student`, and `Registration`. The environment or registration configuration would choose between `EmailConfirmationSender` and `TextConfirmationSender`.
+
+An important ownership decision is to keep tuition calculation in `TuitionCalculator`, not `RegistrationService`. The calculator owns the rate and discount rules because those are billing rules, while the service owns the sequence of steps. That separation lets the university change pricing without changing file/database storage or notification code. The service should confirm registration only after saving succeeds; a failure should be reported rather than silently treated as success.
